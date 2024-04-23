@@ -1,5 +1,6 @@
 import { component$, Slot } from "@builder.io/qwik";
 import type { RequestHandler } from "@builder.io/qwik-city";
+import Header from "~/components/header/header";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -13,5 +14,17 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 };
 
 export default component$(() => {
-  return <Slot />;
+  return (
+    <>
+      <main>
+        <Header />
+        <section class="container">
+          <Slot />
+        </section>
+      </main>
+      <footer>
+        <p>Copyright 2023 Mario Life.</p>
+      </footer>
+    </>
+  )
 });
